@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Home Heritage Philippines</title>
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#d6f2e1;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#2f3e1f;
+color:white;
+display:flex;
+align-items:center;
+padding:12px 40px;
+z-index:2000;
+transition:transform 0.4s ease;
+}
+
+.navbar.hide{
+transform:translateY(-100%);
+}
+
+.navbar h3{
+margin:0;
+font-family:"Times New Roman", serif;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+margin-left:40px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-size:16px;
+padding:6px 10px;
+border-radius:6px;
+transition:all .3s ease;
+}
+
+.nav-links a:hover{
+background:rgba(255,255,255,0.15);
+box-shadow:0 0 10px rgba(255,255,255,0.8),
+0 0 20px rgba(255,255,255,0.6);
+}
+
+/* HERO */
+
+.hero{
+background:url("IMAGES/topImage.png") center/cover no-repeat;
+color:white;
+padding:200px 20px 140px;
+text-shadow:2px 2px 6px rgba(0,0,0,0.6);
+text-align:center;
+}
+
+.hero h1{
+font-family:"Times New Roman", serif;
+font-size:72px;
+margin:0;
+}
+
+.subtitle{
+font-size:22px;
+}
+
+/* WELCOME */
+
+.welcome{
+max-width:900px;
+margin:80px auto;
+text-align:center;
+}
+
+.welcome h2{
+font-size:52px;
+font-family:"Times New Roman", serif;
+}
+
+.welcome p{
+font-size:22px;
+line-height:1.7;
+}
+
+/* ABOUT */
+
+.about-us{
+background:rgb(86,110,61);
+color:white;
+padding:70px 40px;
+}
+
+.about-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+max-width:1200px;
+margin:auto;
+gap:40px;
+}
+
+.about-text{
+flex:1;
+}
+
+.about-text h2{
+font-size:48px;
+font-family:"Times New Roman", serif;
+}
+
+.about-text p{
+font-size:22px;
+line-height:1.7;
+}
+
+.about-image{
+flex:1;
+display:flex;
+justify-content:center;
+}
+
+.about-image img{
+max-width:100%;
+}
+
+/* MAP INSTRUCTION */
+
+.map-instruction{
+text-align:center;
+font-size:26px;
+margin:30px auto 10px auto;
+font-family:"Times New Roman", serif;
+
+background:rgb(86,110,61);
+color:white;
+
+padding:20px 40px;
+width:fit-content;
+
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* MAP */
+
+.map-wrapper{
+display:flex;
+justify-content:center;
+margin:-80px auto 80px auto; /* slightly lower than before */
+}
+
+.paper-panel{
+display:inline-block;
+background:url("IMAGES/paperTear.png") center 40% no-repeat;
+background-size:110% 80%;
+padding:100px 120px;
+}
+
+.map-container{
+position:relative;
+width:320px;
+height:820px;
+left:-20px;
+}
+
+.map-container img{
+position:absolute;
+cursor:pointer;
+transition:transform .25s ease, filter .25s ease;
+}
+
+.map-container img:hover{
+transform:scale(1.06);
+filter:brightness(1.1);
+}
+
+.luzon{
+width:268px;
+height:551px;
+top:0;
+left:10px;
+}
+
+.visayas{
+width:153px;
+height:146px;
+top:355px;
+left:185px;
+}
+
+.mindanao{
+width:281px;
+height:238px;
+top:440px;
+left:100px;
+}
+
+/* POPUP */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+z-index:3000;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:25px;
+border-radius:10px;
+width:300px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+display:none;
+z-index:4000;
+text-align:center;
+}
+
+.popup h3{
+margin-top:0;
+font-family:"Times New Roman", serif;
+}
+
+.button-row{
+margin-top:15px;
+display:flex;
+justify-content:space-between;
+}
+
+.popup button,
+.learn-btn{
+padding:8px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.close-btn{
+background:#4f5d75;
+color:white;
+}
+
+.learn-btn{
+background:#2d8f5a;
+color:white;
+text-decoration:none;
+}
+
+/* CONTACT */
+
+.contact{
+background:#2f3e1f;
+color:white;
+padding:70px 40px;
+text-align:center;
+}
+
+.contact h2{
+font-family:"Times New Roman", serif;
+font-size:48px;
+}
+
+.contact p{
+font-size:20px;
+line-height:1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar" id="navbar">
+<h3>Home Heritage</h3>
+
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#about">About Us</a>
+<a href="#contact">Contact Us</a>
+</div>
+</div>
+
+<header class="hero" id="home">
+<h1>Home Heritage Philippines</h1>
+<p class="subtitle">Explore the culture all over the Philippines.</p>
+</header>
+
+<section class="welcome">
+<h2>Welcome</h2>
+<p>
+Welcome to the Home Heritage homepage. Here we explore the rich and diverse culture of the Philippines and discover traditional Filipino homes and their architectural significance throughout history.
+</p>
+</section>
+
+<section class="about-us" id="about">
+
+<div class="about-container">
+
+<div class="about-text">
+<h2>About Us</h2>
+<p>
+Home Heritage Philippines celebrates and preserves traditional Filipino houses such as the Bahay Kubo, Bahay na Bato, and ancestral homes across the country.
+</p>
+</div>
+
+<div class="about-image">
+<img src="IMAGES/aboutUs.png">
+</div>
+
+</div>
+
+</section>
+
+<div class="map-instruction">
+Click one of the regions, to explore the culture of it.
+</div>
+
+<div class="map-wrapper">
+
+<div class="paper-panel">
+<div class="map-container">
+
+<img src="MAP/luzon.png" class="luzon" onclick="openPopup('luzon')">
+<img src="MAP/visayas.png" class="visayas" onclick="openPopup('visayas')">
+<img src="MAP/mindanao.png" class="mindanao" onclick="openPopup('mindanao')">
+
+</div>
+</div>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
+
+<div class="popup" id="popup">
+<h3 id="popupTitle"></h3>
+<p id="popupText"></p>
+
+<div class="button-row">
+<button class="close-btn" onclick="closePopup()">Close</button>
+<a id="learnMoreBtn" class="learn-btn">Learn More</a>
+</div>
+</div>
+
+<section class="contact" id="contact">
+<h2>Contact Us</h2>
+<p>Email: homeheritage@gmail.com</p>
+<p>Phone: +63 912 345 6789</p>
+</section>
+
+<script>
+
+let lastScroll = 0;
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+let currentScroll = window.pageYOffset;
+
+if(currentScroll > lastScroll){
+navbar.classList.add("hide");
+}
+else{
+navbar.classList.remove("hide");
+}
+
+lastScroll = currentScroll;
+
+});
+
+const regions = {
+
+luzon:{
+title:"Luzon",
+text:"Luzon is the largest island group in the Philippines and home to many historical Filipino houses such as the Bahay na Bato and grand ancestral homes.",
+link:"luzon.html"
+},
+
+visayas:{
+title:"Visayas",
+text:"The Visayas region is known for its rich cultural heritage and coastal communities.",
+link:"visayas.html"
+},
+
+mindanao:{
+title:"Mindanao",
+text:"Mindanao features diverse cultures including indigenous and Muslim communities.",
+link:"mindanao.html"
+}
+
+};
+
+function openPopup(region){
+
+document.getElementById("popupTitle").innerText = regions[region].title;
+document.getElementById("popupText").innerText = regions[region].text;
+document.getElementById("learnMoreBtn").href = regions[region].link;
+
+document.getElementById("overlay").style.display="block";
+document.getElementById("popup").style.display="block";
+
+}
+
+function closePopup(){
+
+document.getElementById("overlay").style.display="none";
+document.getElementById("popup").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>

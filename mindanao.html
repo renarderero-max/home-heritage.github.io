@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Heritage: Culture and Heritage</title>
+<style>
+/* Smooth scrolling */
+html{
+  scroll-behavior:smooth;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: rgb(214, 240, 226);
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #2f3e1f;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 12px 40px;
+    z-index: 2000;
+    transition: transform 0.4s ease;
+}
+.navbar.hide {
+    transform: translateY(-100%);
+}
+.navbar h3 {
+    margin: 0;
+    font-family: "Times New Roman", serif;
+}
+.nav-links {
+    display: flex;
+    gap: 25px;
+    margin-left: 40px;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+.nav-links a:hover {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(255,255,255,0.8),
+                0 0 20px rgba(255,255,255,0.6);
+}
+
+/* HEADER HERO */
+header {
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 5rem 0 2rem 0;
+    background-image: url('IMAGES/MINDANAO/mindanaoCulture.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+header::after {
+    content: "";
+    position: absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index:1;
+}
+header img.bottom-image {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%;
+    max-height: 180px;
+    object-fit: cover;
+    opacity: 1;
+    z-index: 2;
+}
+header h1, header p {
+    position: relative;
+    z-index:3;
+    margin:0.5rem 0;
+}
+header h1 {
+    font-size: 4rem;
+}
+header p {
+    font-size: 1.5rem;
+}
+
+/* SECTIONS */
+section {
+    width: 100%;
+    padding: 2rem 0;
+}
+.section-content {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 1.5rem;
+}
+h2 { margin-bottom: 1rem; }
+
+/* Section colors */
+#culture { background-color: rgb(214, 240, 226); color: #333; }
+#traditional-homes { background-color: #566e3d; color: white; }
+#cultural-traditions { background-color: #4f5d75; color: white; }
+#churches { background-color: #566e3d; color: white; }
+#historical-sites { background-color: #4f5d75; color: white; }
+
+/* Subcards */
+.sub-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.sub-card {
+    background-color: rgba(255,255,255,0.95);
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+.sub-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 0.5rem;
+}
+.sub-card p {
+    margin: 0.3rem 0 0 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* MODALS */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+    background-color:#fff;
+    margin:5% auto;
+    border-radius:15px;
+    max-width:800px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+}
+.modal-content img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+    position: relative;
+}
+.modal-text {
+    padding: 1rem 1.5rem;
+    background: white;
+}
+.modal-text h3 { margin-top: 0; }
+.close-btn {
+    background:#4f5d75;
+    color:white;
+    border:none;
+    padding:0.5rem 1rem;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:1rem;
+}
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(-20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar" id="navbar">
+<h3>Home Heritage</h3>
+<div class="nav-links">
+<a href="index.html">Home</a>
+</div>
+</div>
+
+<!-- HERO -->
+<header>
+<img src="IMAGES/transition.png" alt="Transition" class="bottom-image">
+<h1>Discover Mindanao</h1>
+<p>Discover the wonderful region of mindanao!</p>
+</header>
+
+<!-- CULTURE -->
+<section id="culture">
+<div class="section-content">
+<h2>Mindanao Culture</h2>
+<p>Mindanao is the southern region of the Philippines known for its diverse cultures, indigenous groups, and rich traditions. Its culture blends Muslim, Christian, and Lumad influences reflected in music, festivals, crafts, and cuisine.</p>
+</div>
+</section>
+
+<!-- TRADITIONAL HOMES -->
+<section id="traditional-homes">
+<div class="section-content">
+<h2>Traditional Homes</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-badjao')">
+<img src="IMAGES/MINDANAO/badjao.jpg" alt="Badjao Houses">
+<h3>Badjao Houses</h3>
+<p>Stilt houses built over water by the Badjao people of Mindanao's coastal regions.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-tubungan')">
+<img src="IMAGES/MINDANAO/tubungan.jpg" alt="Tubungan Houses">
+<h3>Tubungan Houses</h3>
+<p>Elevated wooden homes typical of indigenous communities in Mindanao.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-maranao')">
+<img src="IMAGES/MINDANAO/maranao.jpg" alt="Maranao Houses">
+<h3>Maranao Houses</h3>
+<p>Ornate houses with traditional okir carvings from the Maranao people.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CULTURAL TRADITIONS -->
+<section id="cultural-traditions">
+<div class="section-content">
+<h2>Cultural Traditions</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-kadayawan')">
+<img src="IMAGES/MINDANAO/kadayawan.jpg" alt="Kadayawan Festival">
+<h3>Kadayawan Festival</h3>
+<p>Davao City's festival celebrating bountiful harvests with street dances, floral floats, and cultural shows.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-gong')">
+<img src="IMAGES/MINDANAO/gong.jpg" alt="Gong Festival">
+<h3>Gong Festival</h3>
+<p>A celebration of traditional Lumad music, dance, and rituals featuring gongs and indigenous costumes.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-weaving')">
+<img src="IMAGES/MINDANAO/weaving.jpg" alt="Mindanao Weaving">
+<h3>Weaving & Crafts</h3>
+<p>Traditional weaving techniques by Mindanao ethnic groups producing vibrant fabrics and handicrafts.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CHURCHES -->
+<section id="churches">
+<div class="section-content">
+<h2>Churches</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-sanPedro')">
+<img src="IMAGES/MINDANAO/sanPedro.jpg" alt="San Pedro Church">
+<h3>San Pedro Church</h3>
+<p>Historic church in Davao with Spanish-inspired architecture.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-zamboanga')">
+<img src="IMAGES/MINDANAO/zamboanga.jpg" alt="Zamboanga Church">
+<h3>Zamboanga Church</h3>
+<p>Colonial-era church showcasing Mindanaoan-European design.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-cagayan')">
+<img src="IMAGES/MINDANAO/cagayan.jpg" alt="Cagayan Church">
+<h3>Cagayan Church</h3>
+<p>Notable church representing Mindanao’s Christian heritage.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HISTORICAL SITES -->
+<section id="historical-sites">
+<div class="section-content">
+<h2>Historical Sites</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-agusan')">
+<img src="IMAGES/MINDANAO/agusan.jpg" alt="Agusan Heritage Site">
+<h3>Agusan Heritage Site</h3>
+<p>Important landmark showcasing indigenous Mindanaoan culture and history.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-sultan')">
+<img src="IMAGES/MINDANAO/sultan.jpg" alt="Sultan Kudarat Historical Site">
+<h3>Sultan Kudarat Site</h3>
+<p>Historical site honoring the legacy of Sultan Kudarat and Mindanaoan history.</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+&copy; 2026 Home Heritage | All Rights Reserved
+</footer>
+
+<!-- MODALS -->
+<!-- Traditional Homes -->
+<div id="modal-badjao" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/badjao.jpg" alt="Badjao Houses">
+    <div class="modal-text">
+      <h3>Badjao Houses</h3>
+      <p>Stilt houses built over water by the Badjao people of Mindanao's coastal regions.</p>
+      <button class="close-btn" onclick="closeModal('modal-badjao')">Close</button>
+    </div>
+  </div>
+</div>
+<div id="modal-tubungan" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/tubungan.jpg" alt="Tubungan Houses">
+    <div class="modal-text">
+      <h3>Tubungan Houses</h3>
+      <p>Elevated wooden homes typical of indigenous communities in Mindanao.</p>
+      <button class="close-btn" onclick="closeModal('modal-tubungan')">Close</button>
+    </div>
+  </div>
+</div>
+<div id="modal-maranao" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/maranao.jpg" alt="Maranao Houses">
+    <div class="modal-text">
+      <h3>Maranao Houses</h3>
+      <p>Ornate houses with traditional okir carvings from the Maranao people.</p>
+      <button class="close-btn" onclick="closeModal('modal-maranao')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cultural Traditions -->
+<div id="modal-kadayawan" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/kadayawan.jpg" alt="Kadayawan Festival">
+    <div class="modal-text">
+      <h3>Kadayawan Festival</h3>
+      <p>Davao City's festival celebrating bountiful harvests with street dances, floral floats, and cultural shows.</p>
+      <button class="close-btn" onclick="closeModal('modal-kadayawan')">Close</button>
+    </div>
+  </div>
+</div>
+<div id="modal-gong" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/gong.jpg" alt="Gong Festival">
+    <div class="modal-text">
+      <h3>Gong Festival</h3>
+      <p>A celebration of traditional Lumad music, dance, and rituals featuring gongs and indigenous costumes.</p>
+      <button class="close-btn" onclick="closeModal('modal-gong')">Close</button>
+    </div>
+  </div>
+</div>
+<div id="modal-weaving" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/weaving.jpg" alt="Mindanao Weaving">
+    <div class="modal-text">
+      <h3>Weaving & Crafts</h3>
+      <p>Traditional weaving techniques by Mindanao ethnic groups producing vibrant fabrics and handicrafts.</p>
+      <button class="close-btn" onclick="closeModal('modal-weaving')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Churches -->
+<div id="modal-sanPedro" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/sanPedro.jpg" alt="San Pedro Church">
+    <div class="modal-text">
+      <h3>San Pedro Church</h3>
+      <p>Historic church in Davao with Spanish-inspired architecture.</p>
+      <button class="close-btn" onclick="closeModal('modal-sanPedro')">Close</button>
+    </div>
+  </div>
+</div>
+<div id="modal-zamboanga" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/zamboanga.jpg" alt="Zamboanga Church">
+    <div class="modal-text">
+      <h3>Zamboanga Church</h3>
+      <p>Colonial-era church showcasing Mindanaoan-European design.</p>
+      <button class="close-btn" onclick="closeModal('modal-zamboanga')">Close</button>
+    </div>
+  </div>
+</div>
+<div id="modal-cagayan" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/cagayan.jpg" alt="Cagayan Church">
+    <div class="modal-text">
+      <h3>Cagayan Church</h3>
+      <p>Notable church representing Mindanao’s Christian heritage.</p>
+      <button class="close-btn" onclick="closeModal('modal-cagayan')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Historical Sites -->
+<div id="modal-agusan" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/agusan.jpg" alt="Agusan Heritage Site">
+    <div class="modal-text">
+      <h3>Agusan Heritage Site</h3>
+      <p>Important landmark showcasing indigenous Mindanaoan culture and history.</p>
+      <button class="close-btn" onclick="closeModal('modal-agusan')">Close</button>
+    </div>
+  </div>
+</div>
+<div id="modal-sultan" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/MINDANAO/sultan.jpg" alt="Sultan Kudarat Historical Site">
+    <div class="modal-text">
+      <h3>Sultan Kudarat Site</h3>
+      <p>Historical site honoring the legacy of Sultan Kudarat and Mindanaoan history.</p>
+      <button class="close-btn" onclick="closeModal('modal-sultan')">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Navbar hide on scroll */
+let lastScroll = 0;
+const navbar = document.getElementById("navbar");
+window.addEventListener("scroll", () => {
+let currentScroll = window.pageYOffset;
+if(currentScroll > lastScroll){
+navbar.classList.add("hide");
+}else{
+navbar.classList.remove("hide");
+}
+lastScroll = currentScroll;
+});
+
+/* Modal functions */
+function openModal(id){
+document.getElementById(id).style.display='block';
+}
+function closeModal(id){
+document.getElementById(id).style.display='none';
+}
+window.onclick = function(event){
+if(event.target.classList.contains('modal')){
+event.target.style.display='none';
+}
+}
+</script>
+</body>
+</html>

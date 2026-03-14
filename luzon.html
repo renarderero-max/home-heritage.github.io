@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Heritage: Culture and Heritage</title>
+<style>
+/* Smooth scrolling */
+html{
+scroll-behavior:smooth;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: rgb(214, 240, 226);
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #2f3e1f;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 12px 40px;
+    z-index: 2000;
+    transition: transform 0.4s ease;
+}
+.navbar.hide {
+    transform: translateY(-100%);
+}
+.navbar h3 {
+    margin: 0;
+    font-family: "Times New Roman", serif;
+}
+.nav-links {
+    display: flex;
+    gap: 25px;
+    margin-left: 40px;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+.nav-links a:hover {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(255,255,255,0.8),
+                0 0 20px rgba(255,255,255,0.6);
+}
+
+/* HEADER HERO */
+header {
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 5rem 0 2rem 0;
+    background-image: url('IMAGES/luzonCulture.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+header::after {
+    content: "";
+    position: absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index:1;
+}
+header img.bottom-image {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%;
+    max-height: 180px;
+    object-fit: cover;
+    opacity: 1;
+    z-index: 2;
+}
+header h1, header p {
+    position: relative;
+    z-index:3;
+    margin:0.5rem 0;
+}
+header h1 {
+    font-size: 4rem;
+}
+header p {
+    font-size: 1.5rem;
+}
+
+/* SECTIONS */
+section {
+    width: 100%;
+    padding: 2rem 0;
+}
+.section-content {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 1.5rem;
+}
+h2 { margin-bottom: 1rem; }
+
+/* Section colors */
+#culture { background-color: rgb(214, 240, 226); color: #333; }
+#traditional-homes { background-color: #566e3d; color: white; }
+#cultural-traditions { background-color: #4f5d75; color: white; }
+#churches { background-color: #566e3d; color: white; }
+#historical-sites { background-color: #4f5d75; color: white; }
+
+/* Subcards */
+.sub-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.sub-card {
+    background-color: rgba(255,255,255,0.95);
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+.sub-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 0.5rem;
+}
+.sub-card p {
+    margin: 0.3rem 0 0 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* MODALS */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+    background-color:#fff;
+    margin:5% auto;
+    border-radius:15px;
+    max-width:800px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+}
+.modal-content img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+}
+.modal-text {
+    padding: 1rem 1.5rem;
+    background: white;
+}
+.modal-text h3 {
+    margin-top: 0;
+}
+.close-btn {
+    background:#4f5d75;
+    color:white;
+    border:none;
+    padding:0.5rem 1rem;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:1rem;
+}
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(-20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar" id="navbar">
+<h3>Home Heritage</h3>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="#about-us">About Us</a>
+<a href="#contact-us">Contact Us</a>
+</div>
+</div>
+
+<!-- HERO -->
+<header>
+<img src="IMAGES/transition.png" alt="Transition" class="bottom-image">
+<h1>Discover Luzon</h1>
+<p>The biggest region of the Philippines</p>
+</header>
+
+<!-- CULTURE -->
+<section id="culture">
+<div class="section-content">
+<h2>Luzon Culture</h2>
+<p>Luzon is the largest island in the Philippines and a melting pot of diverse cultures, traditions, and ethnic groups. Its culture blends indigenous, Spanish, and American influences visible in festivals, traditional clothing, music, and cuisine.</p>
+</div>
+</section>
+
+<!-- TRADITIONAL HOMES -->
+<section id="traditional-homes">
+<div class="section-content">
+<h2>Traditional Homes</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-bahaykubo')">
+<img src="IMAGES/bahayKubo.png" alt="Bahay Kubo">
+<h3>Bahay Kubo</h3>
+<p>Simple stilt house made of bamboo and nipa palm.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-ifugao')">
+<img src="IMAGES/ifugaoHouses.jpg" alt="Ifugao Houses">
+<h3>Ifugao Houses</h3>
+<p>Traditional elevated houses near rice terraces.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-spanish')">
+<img src="IMAGES/spanishHouses.jpg" alt="Spanish Colonial Houses">
+<h3>Spanish Colonial Houses</h3>
+<p>Stone and wood houses built during Spanish era.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CULTURAL TRADITIONS -->
+<section id="cultural-traditions">
+<div class="section-content">
+<h2>Cultural Traditions</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-panagbenga')">
+<img src="IMAGES/panagbengaFestival.png" alt="Panagbenga Festival">
+<h3>Panagbenga Festival</h3>
+<p>Flower festival celebrated in Baguio every February.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-pahiyas')">
+<img src="IMAGES/pahiyasFestival.jpg" alt="Pahiyas Festival">
+<h3>Pahiyas Festival</h3>
+<p>Colorful harvest festival in Lucban, Quezon.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-weaving')">
+<img src="IMAGES/luzonWeaving.jpg" alt="Weaving">
+<h3>Weaving & Crafts</h3>
+<p>Traditional weaving techniques of Luzon ethnic groups.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CHURCHES -->
+<section id="churches">
+<div class="section-content">
+<h2>Churches</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-sanAgustin')">
+<img src="IMAGES/sanAgustin.jpg" alt="San Agustin Church">
+<h3>San Agustin Church</h3>
+<p>One of the oldest churches in the Philippines.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-paoay')">
+<img src="IMAGES/paoayChurch.jpg" alt="Paoay Church">
+<h3>Paoay Church</h3>
+<p>UNESCO World Heritage Baroque church.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-miagao')">
+<img src="IMAGES/miagaoChurch.jpg" alt="Miagao Church">
+<h3>Miagao Church</h3>
+<p>Baroque church with intricate Filipino-European motifs.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HISTORICAL SITES -->
+<section id="historical-sites">
+<div class="section-content">
+<h2>Historical Sites</h2>
+<div class="sub-examples">
+<div class="sub-card" onclick="openModal('modal-banaue')">
+<img src="IMAGES/bananueTerraces.jpg" alt="Banaue Rice Terraces">
+<h3>Banaue Rice Terraces</h3>
+<p>Ancient rice terraces carved by the Ifugao people.</p>
+</div>
+<div class="sub-card" onclick="openModal('modal-fortsantiago')">
+<img src="IMAGES/fortSantiago.jpg" alt="Fort Santiago">
+<h3>Fort Santiago</h3>
+<p>Spanish colonial fortress in Intramuros, Manila.</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+&copy; 2026 Home Heritage | All Rights Reserved
+</footer>
+
+<!-- MODALS -->
+<!-- Traditional Homes -->
+<div id="modal-bahaykubo" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/bahayKubo.png" alt="Bahay Kubo">
+    <div class="modal-text">
+      <h3>Bahay Kubo</h3>
+      <p>The Bahay Kubo is a traditional Filipino stilt house made of bamboo and nipa palm. Designed for tropical weather, it showcases rural Filipino life and community culture.</p>
+      <button class="close-btn" onclick="closeModal('modal-bahaykubo')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-ifugao" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/ifugaoHouses.jpg" alt="Ifugao Houses">
+    <div class="modal-text">
+      <h3>Ifugao Houses</h3>
+      <p>Elevated wooden houses built by the Ifugao people, designed to live harmoniously with the rice terraces and mountainous terrain.</p>
+      <button class="close-btn" onclick="closeModal('modal-ifugao')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-spanish" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/spanishHouses.jpg" alt="Spanish Colonial Houses">
+    <div class="modal-text">
+      <h3>Spanish Colonial Houses</h3>
+      <p>Stone and wood houses from the Spanish colonial era, featuring capiz windows, clay tile roofs, and intricate woodwork.</p>
+      <button class="close-btn" onclick="closeModal('modal-spanish')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cultural Traditions -->
+<div id="modal-panagbenga" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/panagbengaFestival.png" alt="Panagbenga Festival">
+    <div class="modal-text">
+      <h3>Panagbenga Festival</h3>
+      <p>Flower festival in Baguio celebrated every February, showcasing floats, street dances, and local artistry.</p>
+      <button class="close-btn" onclick="closeModal('modal-panagbenga')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-pahiyas" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/pahiyasFestival.jpg" alt="Pahiyas Festival">
+    <div class="modal-text">
+      <h3>Pahiyas Festival</h3>
+      <p>Harvest festival in Lucban, Quezon, known for colorful decorations made from rice, fruits, and vegetables to honor San Isidro Labrador.</p>
+      <button class="close-btn" onclick="closeModal('modal-pahiyas')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-weaving" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/luzonWeaving.jpg" alt="Weaving">
+    <div class="modal-text">
+      <h3>Weaving & Crafts</h3>
+      <p>Traditional weaving techniques practiced by Luzon ethnic groups, creating colorful fabrics and intricate handicrafts.</p>
+      <button class="close-btn" onclick="closeModal('modal-weaving')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Churches -->
+<div id="modal-sanAgustin" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/sanAgustin.jpg" alt="San Agustin Church">
+    <div class="modal-text">
+      <h3>San Agustin Church</h3>
+      <p>One of the oldest churches in the Philippines, built during the Spanish era with Baroque architecture.</p>
+      <button class="close-btn" onclick="closeModal('modal-sanAgustin')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-paoay" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/paoayChurch.jpg" alt="Paoay Church">
+    <div class="modal-text">
+      <h3>Paoay Church</h3>
+      <p>UNESCO World Heritage Baroque church famous for its massive buttresses and intricate façade.</p>
+      <button class="close-btn" onclick="closeModal('modal-paoay')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-miagao" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/miagaoChurch.jpg" alt="Miagao Church">
+    <div class="modal-text">
+      <h3>Miagao Church</h3>
+      <p>Baroque church with detailed Filipino-European carvings, representing local culture and religious history.</p>
+      <button class="close-btn" onclick="closeModal('modal-miagao')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Historical Sites -->
+<div id="modal-banaue" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/bananueTerraces.jpg" alt="Banaue Rice Terraces">
+    <div class="modal-text">
+      <h3>Banaue Rice Terraces</h3>
+      <p>Thousands of years old terraces carved by the Ifugao people, reflecting ingenuity in sustainable agriculture.</p>
+      <button class="close-btn" onclick="closeModal('modal-banaue')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-fortsantiago" class="modal">
+  <div class="modal-content">
+    <img src="IMAGES/fortSantiago.jpg" alt="Fort Santiago">
+    <div class="modal-text">
+      <h3>Fort Santiago</h3>
+      <p>Spanish colonial fortress in Intramuros, Manila, historically used for defense and imprisonment during colonial times.</p>
+      <button class="close-btn" onclick="closeModal('modal-fortsantiago')">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Navbar hide on scroll */
+let lastScroll = 0;
+const navbar = document.getElementById("navbar");
+window.addEventListener("scroll", () => {
+let currentScroll = window.pageYOffset;
+if(currentScroll > lastScroll){
+navbar.classList.add("hide");
+}else{
+navbar.classList.remove("hide");
+}
+lastScroll = currentScroll;
+});
+
+/* Modal functions */
+function openModal(id){
+document.getElementById(id).style.display='block';
+}
+function closeModal(id){
+document.getElementById(id).style.display='none';
+}
+window.onclick = function(event){
+if(event.target.classList.contains('modal')){
+event.target.style.display='none';
+}
+}
+</script>
+
+</body>
+</html>
